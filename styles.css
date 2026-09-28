@@ -1,0 +1,532 @@
+/* Pad & Pixel: site concept, shared stylesheet (all pages).
+   1. Tokens and base      4. Homepage sections
+   2. Type, buttons         5. Motion, responsive (homepage)
+   3. Header and nav        6. Inner-page components (page hero, chapters, rows, prose, CTA band)
+
+   Context tokens (--fg, --fg-2, --fg-muted, --line, --line-strong, --accent-text) default to
+   paper values and are remapped by .on-dark and .on-red, so shared components work on any band. */
+
+:root{
+  --paper:#F3F1EB;
+  --paper-2:#EAE7DE;
+  --ink:#151514;
+  --ink-2:#3A3936;
+  --muted:#5F5C55;
+  --rule:rgba(21,21,20,.16);
+  --rule-strong:rgba(21,21,20,.85);
+  --red:#FF3C46;          /* logo red, graphics + dark backgrounds */
+  --red-ink:#C8202C;      /* logo red darkened for small text on paper (5:1) */
+  --blue:#2D7DFF;         /* logo blue, used only inside the mark */
+  --dark-muted:#BAB5AB;
+  --dark-rule:rgba(243,241,235,.18);
+
+  /* context tokens (paper defaults) */
+  --fg:var(--ink);
+  --fg-2:var(--ink-2);
+  --fg-muted:var(--muted);
+  --line:var(--rule);
+  --line-strong:var(--rule-strong);
+  --accent-text:var(--red-ink);
+
+  --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+
+  --gutter:clamp(20px, 4.4vw, 64px);
+  --max:1360px;
+  --gap:clamp(16px, 2vw, 32px);
+  --section:clamp(72px, 8.4vw, 128px);
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--serif);font-size:1.125rem;line-height:1.6;
+  font-optical-sizing:auto;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+::selection{background:var(--red);color:var(--ink)}
+
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.on-dark :focus-visible,.on-red :focus-visible{outline-color:var(--paper)}
+.on-red :focus-visible{outline-color:var(--ink)}
+
+.skip{
+  position:absolute;left:12px;top:-60px;z-index:100;
+  background:var(--ink);color:var(--paper);padding:0 18px;min-height:44px;display:inline-flex;align-items:center;
+  font:600 .9rem/1 var(--sans);text-decoration:none;
+}
+.skip:focus{top:12px}
+
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+
+/* ---------- type ---------- */
+/* Section flag: a newspaper "Oxford rule" (thick over thin) with the section name
+   and a short dek. It replaces per-section eyebrow labels. */
+.flag{
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 24px;
+  padding-top:20px;margin-bottom:clamp(36px,4.6vw,64px);
+  background:
+    linear-gradient(currentColor,currentColor) 0 0/100% 3px no-repeat,
+    linear-gradient(currentColor,currentColor) 0 6px/100% 1px no-repeat;
+}
+.flag .k{font:700 .8rem/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;font-stretch:112%}
+.flag .d{font:italic 400 1.05rem/1.3 var(--serif);color:var(--fg-muted)}
+.h1,.h2,.h3{font-family:var(--sans);font-weight:800;color:inherit;text-wrap:balance}
+.h1{
+  font-size:clamp(2.75rem, 1.3rem + 5.4vw, 6.6rem);
+  line-height:.96;letter-spacing:-.034em;word-spacing:.05em;font-stretch:104%;
+}
+.h2{
+  font-size:clamp(2.1rem, 1.2rem + 3.2vw, 4.25rem);
+  line-height:1.02;letter-spacing:-.03em;word-spacing:.04em;font-stretch:104%;
+}
+.h3{
+  font-size:clamp(1.45rem, 1.1rem + 1.1vw, 2.1rem);
+  line-height:1.05;letter-spacing:-.025em;font-weight:750;font-stretch:106%;
+}
+.lead{
+  font-size:clamp(1.2rem, 1.02rem + .7vw, 1.6rem);
+  line-height:1.42;letter-spacing:-.005em;text-wrap:pretty;
+}
+p{text-wrap:pretty}
+.muted{color:var(--fg-muted)}
+
+/* ---------- buttons & links ---------- */
+.btn{
+  --b-bg:var(--ink);--b-fg:var(--paper);
+  display:inline-flex;align-items:center;gap:14px;
+  min-height:56px;padding:0 24px 0 22px;
+  background:var(--b-bg);color:var(--b-fg);
+  font:650 1rem/1 var(--sans);font-stretch:108%;letter-spacing:-.005em;
+  text-decoration:none;border:0;cursor:pointer;
+  transition:transform .35s var(--ease), background-color .25s;
+}
+.btn .px{
+  width:10px;height:10px;background:var(--red);flex:none;
+  transition:transform .45s var(--ease);
+}
+.btn:hover .px{transform:translate(4px,-4px)}
+.btn:active{transform:translateY(1px)}
+.btn--light{--b-bg:var(--paper);--b-fg:var(--ink)}
+
+.tlink{
+  display:inline-flex;align-items:center;min-height:44px;
+  font:600 1rem/1.2 var(--sans);font-stretch:106%;
+  text-decoration:none;
+  background:linear-gradient(currentColor,currentColor) 0 calc(100% - 10px)/100% 1.5px no-repeat;
+  transition:background-size .4s var(--ease);
+}
+.tlink:hover{background-size:0 1.5px;background-position:100% calc(100% - 10px)}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;background:var(--paper);
+  border-bottom:1px solid transparent;transition:border-color .3s;
+}
+.site-header.is-scrolled{border-bottom-color:var(--rule)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
+.brand svg{width:30px;height:30px}
+.amp{font-family:"Montserrat",var(--sans);font-stretch:100%;letter-spacing:0}
+.wordmark{
+  font:800 1.34rem/1 "Montserrat",var(--sans);letter-spacing:.015em;
+  text-transform:uppercase;white-space:nowrap;
+}
+.nav{display:flex;align-items:center;gap:clamp(12px,2.2vw,36px)}
+.nav ul{display:flex;gap:clamp(8px,1.8vw,28px)}
+.nav a:not(.btn){
+  display:inline-flex;align-items:center;min-height:44px;
+  font:550 .95rem/1 var(--sans);font-stretch:106%;text-decoration:none;
+  position:relative;
+}
+.nav a:not(.btn)::after{
+  content:"";position:absolute;left:0;right:0;bottom:10px;height:2px;background:var(--red);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);
+}
+.nav a:not(.btn):hover::after{transform:scaleX(1)}
+.nav .btn{min-height:44px;padding:0 18px 0 16px;font-size:.92rem}
+/* current page: the red rule stays on; the Contact button turns hollow */
+.nav a:not(.btn)[aria-current="page"]::after{transform:scaleX(1)}
+.nav .btn[aria-current="page"]{--b-bg:transparent;--b-fg:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.menu-btn{display:none}
+
+@media (max-width: 900px){
+  .nav{display:none}
+  .menu-btn{
+    display:inline-flex;align-items:center;gap:10px;min-height:44px;min-width:44px;padding:0 4px 0 12px;
+    background:none;border:0;color:var(--ink);cursor:pointer;
+    font:600 .95rem/1 var(--sans);font-stretch:108%;
+  }
+  .menu-btn .icon{width:22px;height:14px;position:relative}
+  .menu-btn .icon::before,.menu-btn .icon::after{
+    content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;transition:transform .3s var(--ease),top .3s var(--ease);
+  }
+  .menu-btn .icon::before{top:2px}
+  .menu-btn .icon::after{top:10px}
+  .menu-btn[aria-expanded="true"] .icon::before{top:6px;transform:rotate(45deg)}
+  .menu-btn[aria-expanded="true"] .icon::after{top:6px;transform:rotate(-45deg)}
+  .nav.is-open{
+    display:block;position:absolute;left:0;right:0;top:100%;
+    background:var(--paper);border-bottom:1px solid var(--rule);
+    padding:8px var(--gutter) 24px;
+  }
+  .nav.is-open ul{flex-direction:column;gap:0}
+  .nav.is-open li{border-bottom:1px solid var(--rule)}
+  .nav.is-open a:not(.btn){min-height:56px;font-size:1.25rem;width:100%}
+  .nav.is-open a:not(.btn)::after{display:none}
+  .nav.is-open .btn{margin-top:20px;min-height:56px;width:100%;justify-content:space-between;font-size:1rem}
+  /* current page in the open menu: the same red rule, under the word only */
+  .nav.is-open a:not(.btn)[aria-current="page"]{
+    text-decoration:underline;text-decoration-color:var(--red);
+    text-decoration-thickness:2px;text-underline-offset:9px;
+  }
+}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(40px,8vw,120px)}
+.hero-grid{align-items:start;row-gap:40px}
+.hero-copy{grid-column:1 / span 9}
+.hero-copy .h1{text-wrap:wrap}
+.hero-copy .h1 .br{display:block}
+@media (max-width:900px){.hero-copy .h1 .br{display:inline}.hero-copy .h1{text-wrap:balance}}
+.hero-copy .lead{max-width:36ch;margin-top:clamp(24px,3vw,40px);color:var(--ink-2)}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:clamp(28px,3.4vw,44px)}
+.hero-mark{grid-column:10 / span 3;justify-self:end;width:100%;max-width:340px;margin-top:clamp(0px,3.4vw,52px)}
+.mark-art{width:100%;height:auto;overflow:visible}
+.mark-art .guide{stroke:var(--ink);stroke-opacity:.14;stroke-width:1;fill:none;vector-effect:non-scaling-stroke}
+.mark-art .guide--dash{stroke-dasharray:3 5;stroke-opacity:.22}
+
+/* ---------- sections ---------- */
+.section{padding-block:var(--section)}
+.section--flush{padding-top:0}
+.section-head{align-items:end;margin-bottom:clamp(40px,5vw,72px);row-gap:20px}
+.section-head .h2{grid-column:1 / span 7}
+.section-head .intro{grid-column:9 / span 4;color:var(--fg-2)}
+
+/* practices */
+.practices{border-top:1px solid var(--rule-strong)}
+.practice{
+  padding-block:clamp(26px,3vw,40px);border-bottom:1px solid var(--rule);
+  row-gap:14px;position:relative;
+}
+.practice::before{
+  content:"";position:absolute;left:0;top:-1px;height:2px;width:0;background:var(--red);
+  transition:width .6s var(--ease);
+}
+.practice:hover::before{width:100%}
+.practice .num{grid-column:1 / span 1;font:600 .85rem/2.1 var(--sans);letter-spacing:.1em;color:var(--muted);font-stretch:110%}
+.practice .h3{grid-column:2 / span 4}
+.practice .desc{grid-column:6 / span 4;color:var(--ink-2)}
+.practice .list{grid-column:10 / span 3}
+.list li{font:500 1rem/1.35 var(--sans);font-stretch:104%}
+.practice .list li{border-bottom:1px solid var(--rule);padding-block:9px}
+.practice .list li:first-child{padding-top:4px}
+.practice .list li:last-child{border-bottom:0}
+
+/* ---------- mock reviews (dark) ---------- */
+.on-dark{
+  background:var(--ink);color:var(--paper);
+  --fg:var(--paper);--fg-2:var(--dark-muted);--fg-muted:var(--dark-muted);
+  --line:var(--dark-rule);--line-strong:var(--paper);--accent-text:var(--red);
+}
+.mock .section-head .h2{grid-column:1 / span 9}
+.mock-lead{row-gap:40px;margin-bottom:clamp(56px,6.4vw,96px)}
+.mock-lead .copy{grid-column:1 / span 7;display:grid;gap:24px}
+.mock-lead .copy p:not(.lead){color:var(--dark-muted);max-width:56ch}
+.spec{grid-column:9 / span 4;border-top:1px solid var(--line-strong);align-self:start}
+.spec div{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding-block:14px;border-bottom:1px solid var(--line);
+}
+.spec dt{font:600 .78rem/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--fg-muted);font-stretch:110%}
+.spec dd{font:700 1.05rem/1.3 var(--sans);text-align:right;font-stretch:104%}
+.spec dd b{color:var(--accent-text);font-weight:800}
+
+.formats-title{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:20px}
+.formats{border-top:1px solid var(--line-strong)}
+.format{padding-block:clamp(22px,2.6vw,32px);border-bottom:1px solid var(--line);row-gap:10px;align-items:baseline}
+.format .h3{grid-column:1 / span 4;font-size:clamp(1.3rem,1.05rem + .8vw,1.75rem)}
+.format p{grid-column:5 / span 6;color:var(--fg-2)}
+.format .tag{
+  grid-column:11 / span 2;justify-self:end;text-align:right;
+  font:600 .78rem/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;font-stretch:110%;color:var(--fg);
+}
+
+.process{margin-top:clamp(40px,4.6vw,64px);align-items:baseline;row-gap:14px}
+.process-title{
+  grid-column:1 / span 4;
+  font:700 .8rem/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;font-stretch:112%;color:var(--fg-muted);
+}
+.steps{grid-column:5 / span 8;display:flex;flex-wrap:wrap;gap:10px 36px;counter-reset:step}
+.steps li{
+  counter-increment:step;display:inline-flex;align-items:baseline;gap:10px;
+  font:700 clamp(1.1rem,.98rem + .45vw,1.35rem)/1.3 var(--sans);font-stretch:106%;letter-spacing:-.01em;
+}
+.steps li::before{content:counter(step);font:600 .8rem/1 var(--sans);color:var(--accent-text);font-stretch:110%}
+.mock-cta{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;margin-top:clamp(48px,5.6vw,72px)}
+
+/* ---------- clients ---------- */
+.clients .flag{margin-bottom:4px}
+.client-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
+.client-list li{
+  display:flex;align-items:center;gap:16px;
+  padding-block:clamp(22px,2.6vw,36px);border-bottom:1px solid var(--line);
+  font:700 clamp(1.2rem, .78rem + 1.6vw, 2.15rem)/1.08 var(--sans);letter-spacing:-.03em;font-stretch:104%;
+  text-wrap:balance;
+}
+
+/* ---------- founder ---------- */
+.founder-grid{row-gap:28px;align-items:start;margin-bottom:clamp(40px,5vw,72px)}
+.founder-id{grid-column:1 / span 5}
+.founder-id .role{margin-top:16px;font:600 1rem/1.3 var(--sans);font-stretch:108%;color:var(--fg-muted)}
+.founder-lead{grid-column:7 / span 6}
+.record{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap);
+  border-top:1px solid var(--line-strong);
+}
+.record div{padding-block:20px 26px;border-bottom:1px solid var(--line)}
+.record dt{font:700 1.15rem/1.3 var(--sans);font-stretch:106%;letter-spacing:-.01em;margin-bottom:6px}
+.record dd{font-size:1.02rem;line-height:1.5;color:var(--fg-2);max-width:40ch}
+.founder-foot{margin-top:28px;font-size:1rem;color:var(--fg-muted);max-width:70ch}
+
+/* ---------- contact (red) + inner-page CTA band (same block) ---------- */
+.on-red{
+  background:var(--red);color:var(--ink);
+  --fg:var(--ink);--fg-2:var(--ink);--fg-muted:var(--ink);
+  --line:rgba(21,21,20,.3);--line-strong:var(--ink);--accent-text:var(--ink);
+}
+.contact,.cta-band{padding-block:clamp(72px,8.4vw,128px)}
+.contact-grid,.cta-grid{row-gap:28px;align-items:end}
+.contact .h2,.cta-band .h2{grid-column:1 / span 8;font-size:clamp(2.4rem,1.2rem + 4vw,5.25rem);line-height:.98}
+.contact .note,.cta-band .note{grid-column:9 / span 4;font-size:1.15rem;line-height:1.5}
+.email{
+  display:inline-block;margin-top:clamp(36px,5vw,72px);
+  font:800 clamp(1.3rem, .5rem + 4.3vw, 5rem)/1.05 var(--sans);letter-spacing:-.035em;font-stretch:100%;
+  text-decoration:none;overflow-wrap:anywhere;
+  /* keep the 44px target, but fill it from the top so the underline stays under the letters on phones */
+  padding-top:max(.2em, calc(44px - 1.13em));padding-bottom:.08em;min-height:44px;
+  background:linear-gradient(var(--ink),var(--ink)) 0 100%/100% .08em no-repeat;
+  transition:background-size .5s var(--ease);
+}
+.email:hover{background-size:0 .08em;background-position:100% 100%}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--ink);color:var(--paper);padding-block:40px 36px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 32px}
+.foot .brand svg{width:26px;height:26px}
+.foot .brand .wordmark{font-size:1.05rem}
+.foot small{font:500 .85rem/1.5 var(--sans);font-stretch:104%;color:var(--dark-muted)}
+.foot .credit{display:block;margin-top:4px;opacity:.8}
+.foot .credit a{text-decoration:none;display:inline-block;padding-block:12px;margin-block:-12px}
+.foot .credit a:hover{text-decoration:underline}
+.foot .top{font:600 .9rem/1 var(--sans);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;gap:10px}
+.foot .top::before{content:"";width:8px;height:8px;background:var(--red)}
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion: no-preference){
+  .mark-art .m-body{animation:rise .9s var(--ease) .15s both}
+  .mark-art .m-tri{animation:rise .9s var(--ease) .35s both}
+  .mark-art .m-sq{animation:drop .8s cubic-bezier(.3,1.35,.5,1) .6s both}
+  .mark-art .guide{stroke-dasharray:1200;animation:draw 1.6s var(--ease) both}
+  .mark-art .guide--dash{animation:fade 1.2s ease 1s both;stroke-dasharray:3 5}
+  .hero-copy > *{animation:rise .8s var(--ease) both}
+  .hero-copy > :nth-child(2){animation-delay:.08s}
+  .hero-copy > :nth-child(3){animation-delay:.16s}
+  .hero-copy > :nth-child(4){animation-delay:.24s}
+  .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .js .reveal.is-in{opacity:1;transform:none}
+}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes drop{from{opacity:0;transform:translateY(-70px)}to{opacity:1;transform:none}}
+@keyframes draw{from{stroke-dashoffset:1200}to{stroke-dashoffset:0}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px){
+  .practice .h3{grid-column:2 / span 5}
+  .practice .desc{grid-column:7 / span 6}
+  .practice .list{grid-column:7 / span 6}
+  .format .h3{grid-column:1 / span 5}
+  .format p{grid-column:6 / span 7}
+  .format .tag{grid-column:6 / span 7;justify-self:start;text-align:left;color:var(--accent-text)}
+}
+@media (max-width: 900px){
+  .hero-copy{grid-column:1 / -1}
+  .hero-mark{grid-column:1 / -1;justify-self:start;max-width:200px;order:-1}
+  .section-head .h2,.section-head .intro,.mock .section-head .h2{grid-column:1 / -1}
+  .mock-lead .copy,.spec{grid-column:1 / -1}
+  .process-title,.steps{grid-column:1 / -1}
+  .founder-id,.founder-lead{grid-column:1 / -1}
+  .record{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .client-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .client-list li:last-child:nth-child(odd){grid-column:1 / -1}
+  .contact .h2,.contact .note,.cta-band .h2,.cta-band .note{grid-column:1 / -1}
+}
+@media (max-width: 700px){
+  body{font-size:1.0625rem}
+  .bar{height:64px}
+  .wordmark{font-size:1.12rem}
+  .brand svg{width:26px;height:26px}
+  .hero-mark{max-width:132px}
+  .practice .num,.practice .h3,.practice .desc,.practice .list{grid-column:1 / -1}
+  .practice{row-gap:12px}
+  .practice .list{margin-top:6px}
+  .format .h3,.format p,.format .tag{grid-column:1 / -1}
+  .steps{flex-direction:column;gap:12px}
+  .record{grid-template-columns:1fr}
+  .record div{padding-block:18px 20px}
+  .formats-title{flex-direction:column;gap:4px}
+  .btn{width:100%;justify-content:space-between}
+  .hero-actions .tlink{margin-left:0}
+  .flag .d{font-size:1rem}
+}
+
+
+/* =====================================================================
+   6. Inner-page components
+   Services, Mock reviews, About, Contact. Same type, rules and red as the
+   homepage; nothing here changes how index.html renders.
+   ===================================================================== */
+
+/* ---------- small helpers ---------- */
+.label{font:700 .8rem/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;font-stretch:112%}
+.stack > * + *{margin-top:clamp(48px,5.6vw,88px)}
+.stack > .flag + *{margin-top:0}
+
+/* ---------- page hero: flag + H1 + intro (+ optional aside) ---------- */
+.page-hero{padding-block:clamp(32px,4.4vw,72px) clamp(64px,7vw,112px)}
+.page-hero .flag{margin-bottom:clamp(28px,3.6vw,52px)}
+.page-hero-grid{row-gap:clamp(24px,3vw,40px);align-items:end}
+.page-title{
+  grid-column:1 / span 10;
+  font-size:clamp(2.4rem, 1.2rem + 3.9vw, 4.75rem);line-height:.98;
+}
+.page-intro{grid-column:1 / span 7;display:grid;gap:18px;color:var(--fg-2)}
+.page-intro .lead{max-width:40ch}
+.page-intro p:not(.lead){max-width:60ch}
+.page-aside{grid-column:9 / span 4;align-self:end}
+/* the hero's bottom padding is the gap; the next paper section starts at its flag */
+.page-hero + .section:not(.on-dark):not(.on-red){padding-top:0}
+
+/* ---------- chapters: heading column left, content right ---------- */
+.chapter{
+  padding-block:clamp(28px,3.4vw,44px) clamp(48px,5.6vw,88px);
+  border-top:1px solid var(--line-strong);row-gap:24px;align-items:start;
+}
+.chapter:last-child{padding-bottom:0}
+.flag + .chapter{border-top:0;padding-top:0}   /* the flag's rule already opens the first chapter */
+.chapter-head{grid-column:1 / span 4}
+.chapter-body{grid-column:6 / span 7}
+.chapter-head .num{
+  display:block;margin-bottom:14px;
+  font:600 .85rem/1 var(--sans);letter-spacing:.1em;color:var(--fg-muted);font-stretch:110%;
+}
+.chapter-title{
+  font:800 clamp(1.65rem, 1.1rem + 1.6vw, 2.6rem)/1.04 var(--sans);
+  letter-spacing:-.028em;word-spacing:.03em;font-stretch:104%;text-wrap:balance;
+}
+.chapter-head .dek{margin-top:14px;color:var(--fg-2);max-width:34ch}
+.chapter-body > * + *{margin-top:clamp(28px,3vw,40px)}
+.chapter-body > .callout{max-width:none}   /* a boxed note runs the full width of the rows above it */
+@media (min-width: 901px){
+  .chapter-head{position:sticky;top:100px}
+  /* side by side, the chapter's own rule (or the flag) already opens a list that starts the body;
+     a second rule just under it reads as a slip */
+  .chapter-body > :is(.rows,.steps):first-child{border-top:0}
+  /* with no number above the title, the first row starts level with the title */
+  .chapter:not(:has(.chapter-head > .num)) .chapter-body > :is(.rows,.steps):first-child > :first-child{padding-top:0}
+}
+
+/* ---------- rows: two-column label / content list (use on <dl>) ---------- */
+.rows{border-top:1px solid var(--line-strong);container-type:inline-size}
+.rows > div{
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:var(--gap);row-gap:6px;
+  padding-block:clamp(18px,2vw,24px) clamp(20px,2.2vw,28px);border-bottom:1px solid var(--line);
+}
+.rows dt{font:700 1.15rem/1.3 var(--sans);font-stretch:106%;letter-spacing:-.01em}
+.rows dd{font-size:1.05rem;line-height:1.55;color:var(--fg-2);max-width:60ch;text-wrap:pretty}
+.rows dd > * + *{margin-top:10px}
+.rows dd a{text-decoration-color:var(--accent-text);text-underline-offset:.2em}
+.rows--stacked > div{grid-template-columns:minmax(0,1fr)}
+@container (max-width: 560px){
+  .rows > div{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ---------- prose: long-form text column ---------- */
+.prose{max-width:66ch}
+.prose > * + *{margin-top:1.1em}
+.prose > :first-child{margin-top:0}
+.prose h2{
+  margin-top:2em;
+  font:800 clamp(1.5rem, 1.15rem + 1.1vw, 2.2rem)/1.08 var(--sans);
+  letter-spacing:-.025em;font-stretch:104%;text-wrap:balance;
+}
+.prose h3{margin-top:1.8em;font:700 1.2rem/1.3 var(--sans);letter-spacing:-.01em;font-stretch:106%}
+.prose h2 + *,.prose h3 + *{margin-top:.6em}
+.prose strong{font-weight:650;color:var(--fg)}
+.prose a{
+  text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em;
+  text-decoration-color:var(--accent-text);
+}
+.prose a:hover{text-decoration-thickness:2px}
+.prose ul > li,.prose ol > li{position:relative;padding-left:1.5em}
+.prose li + li{margin-top:.5em}
+.prose ul > li::before{
+  content:"";position:absolute;left:.2em;top:calc(.8em - 3px);width:6px;height:6px;background:currentColor;
+}
+.prose ol{counter-reset:li}
+.prose ol > li{counter-increment:li}
+.prose ol > li::before{
+  content:counter(li);position:absolute;left:0;top:.35em;
+  font:600 .8rem/1.3 var(--sans);color:var(--accent-text);font-stretch:110%;
+}
+
+/* ---------- callout: a boxed aside, e.g. an NDA note ---------- */
+.callout{
+  background:var(--paper-2);border-top:3px solid var(--fg);
+  padding:18px clamp(18px,2vw,26px) 22px;max-width:62ch;
+}
+.callout .label{display:block;margin-bottom:8px}
+.callout p{font-size:1.05rem;line-height:1.55;color:var(--fg-2)}
+.on-dark .callout{background:rgba(243,241,235,.06)}
+
+/* ---------- CTA band (inner pages): the homepage contact block ----------
+   Markup: section.on-red.cta-band > .wrap > .flag + .grid.cta-grid(h2.h2 + p.note)
+   then either a.email (big address) or .cta-actions (buttons). */
+.cta-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px;margin-top:clamp(36px,5vw,64px)}
+
+/* ---------- inner-page motion ---------- */
+@media (prefers-reduced-motion: no-preference){
+  .page-hero .flag,.page-hero-grid > *{animation:rise .8s var(--ease) both}
+  .page-hero-grid > :nth-child(1){animation-delay:.06s}
+  .page-hero-grid > :nth-child(2){animation-delay:.14s}
+  .page-hero-grid > :nth-child(3){animation-delay:.22s}
+}
+
+/* ---------- inner-page responsive ---------- */
+@media (max-width: 1100px){
+  .chapter-body{grid-column:5 / span 8}
+}
+@media (max-width: 900px){
+  .page-title,.page-intro,.page-aside{grid-column:1 / -1}
+  .page-aside{align-self:start}
+  .chapter-head,.chapter-body{grid-column:1 / -1}
+  .chapter-head .dek{max-width:52ch}
+}
+@media (max-width: 700px){
+  .rows > div{grid-template-columns:minmax(0,1fr)}
+  .cta-actions{flex-direction:column;align-items:stretch;gap:12px}
+  .cta-actions .tlink{align-self:flex-start}
+}

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Services | Pad &amp; Pixel</title>
+<meta name="description" content="Editing, ghostwriting, PR and media training, mock reviews and game analysis for the video game industry, from the founder of Kotaku.">
+<meta name="theme-color" content="#F3F1EB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 340 340'%3E%3Cpath fill='%23151514' d='M0 0H240A60 60 0 0 1 300 60V140A60 60 0 0 1 240 200H100V100H0Z'/%3E%3Cpath fill='%232D7DFF' d='M0 100H100V200Z'/%3E%3Crect fill='%23FF3C46' y='200' width='100' height='100'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600..900&amp;text=PADIXEL%26&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+<style>
+  /* Services page only: the practice index in the hero aside.
+     Built like dl.spec (strong top rule, hairline rows) so it reads as part of the same system. */
+  .page-services .practice-index .label{display:block;margin-bottom:14px;color:var(--fg-muted)}
+  .page-services .practice-index ol{border-top:1px solid var(--line-strong)}
+  .page-services .practice-index li{border-bottom:1px solid var(--line)}
+  .page-services .practice-index a{
+    display:flex;align-items:center;gap:16px;min-height:52px;padding-block:8px;
+    font:650 1.05rem/1.25 var(--sans);font-stretch:106%;letter-spacing:-.005em;text-decoration:none;
+  }
+  .page-services .practice-index .n{
+    flex:none;min-width:2.2em;
+    font:600 .8rem/1 var(--sans);letter-spacing:.1em;color:var(--fg-muted);font-stretch:110%;
+  }
+  .page-services .practice-index a::after{
+    content:"";flex:none;width:8px;height:8px;margin-left:auto;background:var(--red);
+    transform:scale(0);transition:transform .35s var(--ease);
+  }
+  .page-services .practice-index a:hover::after,
+  .page-services .practice-index a:focus-visible::after{transform:none}
+</style>
+</head>
+<body class="page-services">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="Pad &amp; Pixel, home">
+      <svg viewBox="-10 -10 320 320" aria-hidden="true" focusable="false">
+        <path fill="#151514" d="M0 0H240A60 60 0 0 1 300 60V140A60 60 0 0 1 240 200H100V100H0Z"/>
+        <path fill="#2D7DFF" d="M0 100H100V200Z"/>
+        <rect fill="#FF3C46" y="200" width="100" height="100"/>
+      </svg>
+      <span class="wordmark">Pad&amp;Pixel</span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu <span class="icon" aria-hidden="true"></span></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="services.html" aria-current="page">Services</a></li>
+        <li><a href="mock-reviews.html">Mock reviews</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <a class="btn" href="contact.html">Contact <span class="px" aria-hidden="true"></span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. Page hero -->
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="wrap">
+      <div class="flag"><p class="k">Services</p><p class="d">Twelve services in four practices</p></div>
+      <div class="grid page-hero-grid">
+        <h1 class="h1 page-title" id="page-title">Editorial work for the games business.</h1>
+        <div class="page-intro">
+          <p class="lead">Pad &amp; Pixel is an editorial consulting and content firm for the video game industry. The work falls into four practices, and you can hire us for one service or several.</p>
+          <p>Clients have included game companies such as Epic Games and Niantic, media companies such as The Washington Post and Minute Media, and brands such as the LEGO Group and OtterBox.</p>
+        </div>
+        <nav class="page-aside practice-index" aria-labelledby="index-label">
+          <p class="label" id="index-label">On this page</p>
+          <ol>
+            <li><a href="#editorial"><span class="n" aria-hidden="true">01</span><span>Editorial <span class="amp">&amp;</span> content</span></a></li>
+            <li><a href="#media"><span class="n" aria-hidden="true">02</span><span>Media <span class="amp">&amp;</span> PR readiness</span></a></li>
+            <li><a href="#analysis"><span class="n" aria-hidden="true">03</span><span>Game analysis</span></a></li>
+            <li><a href="#on-air"><span class="n" aria-hidden="true">04</span><span>On air</span></a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. The practices -->
+  <div class="section">
+    <div class="wrap">
+      <div class="flag reveal"><p class="k">The practices</p><p class="d">What each service covers</p></div>
+
+      <section class="grid chapter reveal" id="editorial" aria-labelledby="editorial-title">
+        <div class="chapter-head">
+          <span class="num" aria-hidden="true">01</span>
+          <h2 class="chapter-title" id="editorial-title">Editorial <span class="amp">&amp;</span> content</h2>
+          <p class="dek">Writing and editing for anything that goes out under your name.</p>
+        </div>
+        <div class="chapter-body">
+          <dl class="rows">
+            <div>
+              <dt>Copy editing</dt>
+              <dd>A careful read before anything goes public: articles, store copy, reports, press materials. We fix what is wrong and cut what is not needed.</dd>
+            </div>
+            <div>
+              <dt>Ghostwriting and content creation</dt>
+              <dd>Articles and longer pieces written for your byline or your channels. Pad &amp; Pixel runs the news page for the Epic Games Store, where Brian Crecente is executive editor and helps lead a team of more than 50 freelancers.</dd>
+            </div>
+            <div>
+              <dt>Research</dt>
+              <dd>Answers to a specific question about games, players or the business, found and checked the way a reporter would.</dd>
+            </div>
+            <div>
+              <dt>White papers</dt>
+              <dd>A long paper that sets out findings or an argument for an industry audience. We can write it from your research or do the research too.</dd>
+            </div>
+            <div>
+              <dt>Editorial training</dt>
+              <dd>Training for the writers and editors you already employ. The aim is better work from your own team once we have gone.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="grid chapter reveal" id="media" aria-labelledby="media-title">
+        <div class="chapter-head">
+          <span class="num" aria-hidden="true">02</span>
+          <h2 class="chapter-title" id="media-title">Media <span class="amp">&amp;</span> PR readiness</h2>
+          <p class="dek">Brian Crecente was a newspaper reporter for more than 15 years before he covered games full time. This practice puts that experience on your side of the table.</p>
+        </div>
+        <div class="chapter-body">
+          <dl class="rows">
+            <div>
+              <dt>Public relations</dt>
+              <dd>Help with announcements, press materials and dealing with reporters, from someone who spent years as the reporter on the other end.</dd>
+            </div>
+            <div>
+              <dt>Media training</dt>
+              <dd>Preparation for developers and executives before an interview or a public appearance. They practice with the questions they are likely to get, including the hard ones.</dd>
+            </div>
+            <div>
+              <dt>Disaster response training and post&#8209;mortems</dt>
+              <dd>Planning for a bad day before it arrives, such as a broken launch or a leak, so your team knows who speaks and what they say. If it has already happened, an outside account of what went wrong and what to change next time.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="grid chapter reveal" id="analysis" aria-labelledby="analysis-title">
+        <div class="chapter-head">
+          <span class="num" aria-hidden="true">03</span>
+          <h2 class="chapter-title" id="analysis-title">Game analysis</h2>
+          <p class="dek">A critic’s read of your game while there is still time to act on it.</p>
+        </div>
+        <div class="chapter-body">
+          <dl class="rows">
+            <div>
+              <dt>Mock reviews</dt>
+              <dd>
+                <p>A private review of your unreleased game, written the way a critic would write it at launch and delivered under NDA. There are five formats, from a one-week read of a single demo or trailer to checkpoints from vertical slice through gold.</p>
+                <a class="tlink" href="mock-reviews.html">How mock reviews work</a>
+              </dd>
+            </div>
+            <div>
+              <dt>Pre- and post-launch game analysis</dt>
+              <dd>Before release, an assessment of what works, what does not and how the game is likely to land with critics and players. After release, a look back at how it was received and why.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="grid chapter reveal" id="on-air" aria-labelledby="on-air-title">
+        <div class="chapter-head">
+          <span class="num" aria-hidden="true">04</span>
+          <h2 class="chapter-title" id="on-air-title">On air</h2>
+          <p class="dek">Brian Crecente has written about games since 2000 and has appeared on national TV and radio.</p>
+        </div>
+        <div class="chapter-body">
+          <dl class="rows">
+            <div>
+              <dt>Podcasts</dt>
+              <dd>Hosting a podcast about games and the industry, or appearing on yours as a guest.</dd>
+            </div>
+            <div>
+              <dt>On-camera interviews</dt>
+              <dd>Interviews filmed for events or your own channels, with someone who has spent a career asking questions.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- 3. Closing CTA -->
+  <section class="on-red cta-band" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="flag"><p class="k">Contact</p></div>
+      <div class="grid cta-grid">
+        <h2 class="h2" id="cta-title">Not sure which of these you&nbsp;need?</h2>
+        <p class="note">Describe the problem and we will tell you what we would do. A few lines is enough.</p>
+      </div>
+      <a class="email" href="mailto:crecente@padandpixel.com?subject=Project%20inquiry">crecente@<wbr>padandpixel.com</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer on-dark">
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="index.html" aria-label="Pad &amp; Pixel, home">
+        <svg viewBox="-10 -10 320 320" aria-hidden="true" focusable="false">
+          <path fill="#F3F1EB" d="M0 0H240A60 60 0 0 1 300 60V140A60 60 0 0 1 240 200H100V100H0Z"/>
+          <path fill="#2D7DFF" d="M0 100H100V200Z"/>
+          <rect fill="#FF3C46" y="200" width="100" height="100"/>
+        </svg>
+        <span class="wordmark">Pad&amp;Pixel</span>
+      </a>
+    </div>
+    <div>
+      <small>© 2026 Pad <span class="amp">&amp;</span> Pixel, LLC
+        <span class="credit">Design concept by Artur Vasilyan · <a href="https://vasylian.com/">vasylian.com</a></span>
+      </small>
+    </div>
+    <a class="top" href="#top">Back to top</a>
+  </div>
+</footer>
+</body>
+</html>

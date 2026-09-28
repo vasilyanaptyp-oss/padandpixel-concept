@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>About | Pad &amp; Pixel</title>
+<meta name="description" content="Pad &amp; Pixel, LLC is an editorial consulting and content firm for the video game industry, founded by Brian Crecente of Kotaku and Polygon.">
+<meta name="theme-color" content="#F3F1EB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -20 340 340'%3E%3Cpath fill='%23151514' d='M0 0H240A60 60 0 0 1 300 60V140A60 60 0 0 1 240 200H100V100H0Z'/%3E%3Cpath fill='%232D7DFF' d='M0 100H100V200Z'/%3E%3Crect fill='%23FF3C46' y='200' width='100' height='100'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600..900&amp;text=PADIXEL%26&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+<style>
+  /* About page only: the three traffic figures in the founder band.
+     Same frame as dl.record (strong top rule, hairline under each item); the figure is the only new piece. */
+  .page-about .figs{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap);
+    border-top:1px solid var(--line-strong);margin-bottom:clamp(40px,5vw,72px);
+  }
+  .page-about .figs > div{container-type:inline-size;padding-block:20px clamp(24px,2.8vw,36px);border-bottom:1px solid var(--line)}
+  .page-about .figs .role{display:block;margin-top:4px;font:italic 400 1.05rem/1.3 var(--serif);color:var(--fg-muted)}
+  .page-about .figs .fig{
+    margin-top:clamp(20px,2.4vw,32px);
+    font:800 2.2rem/1.02 var(--sans);font-size:clamp(1.9rem,12.5cqi,3.1rem);
+    letter-spacing:-.035em;font-stretch:100%;
+  }
+  .page-about .figs .fig span{display:block}
+  .page-about .figs .fig span:first-child{color:var(--fg-muted)}
+  .page-about .figs .cap{margin-top:14px;font-size:1.02rem;line-height:1.5;color:var(--fg-2);max-width:34ch;text-wrap:pretty}
+  @media (max-width: 700px){
+    .page-about .figs{grid-template-columns:minmax(0,1fr)}
+  }
+</style>
+</head>
+<body class="page-about">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="Pad &amp; Pixel, home">
+      <svg viewBox="-10 -10 320 320" aria-hidden="true" focusable="false">
+        <path fill="#151514" d="M0 0H240A60 60 0 0 1 300 60V140A60 60 0 0 1 240 200H100V100H0Z"/>
+        <path fill="#2D7DFF" d="M0 100H100V200Z"/>
+        <rect fill="#FF3C46" y="200" width="100" height="100"/>
+      </svg>
+      <span class="wordmark">Pad&amp;Pixel</span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu <span class="icon" aria-hidden="true"></span></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="mock-reviews.html">Mock reviews</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+      </ul>
+      <a class="btn" href="contact.html">Contact <span class="px" aria-hidden="true"></span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. Page hero -->
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="wrap">
+      <div class="flag"><p class="k">About</p><p class="d">The company and its founder</p></div>
+      <div class="grid page-hero-grid">
+        <h1 class="h1 page-title" id="page-title">The company, and the reporter who started&nbsp;it.</h1>
+        <div class="page-intro">
+          <p class="lead">Pad &amp; Pixel, LLC is an editorial consulting and content firm for the video game industry. It works for game companies, media publishers and brands.</p>
+          <p>Its founder, Brian Crecente, spent more than 15 years as a newspaper reporter. He started Kotaku and co&#8209;founded Polygon.</p>
+        </div>
+        <div class="page-aside">
+          <dl class="spec">
+            <div><dt>Practices</dt><dd>4</dd></div>
+            <div><dt>Services</dt><dd>12</dd></div>
+            <div><dt>Critics on the bench</dt><dd><b>50+</b></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. The company -->
+  <section class="section" id="company" aria-labelledby="company-title">
+    <div class="wrap">
+      <div class="flag reveal"><h2 class="k" id="company-title">The company</h2><p class="d">What it does and who does it</p></div>
+
+      <div class="grid chapter reveal">
+        <div class="chapter-head">
+          <span class="num" aria-hidden="true">01</span>
+          <h3 class="chapter-title">Four practices</h3>
+          <p class="dek">Clients hire it for one service or several.</p>
+        </div>
+        <div class="chapter-body">
+          <dl class="rows">
+            <div>
+              <dt>Editorial <span class="amp">&amp;</span> content</dt>
+              <dd>Copy editing, ghostwriting and content creation, research, white papers and editorial training.</dd>
+            </div>
+            <div>
+              <dt>Media <span class="amp">&amp;</span> PR readiness</dt>
+              <dd>Public relations, media training, disaster response training and post&#8209;mortems.</dd>
+            </div>
+            <div>
+              <dt>Game analysis</dt>
+              <dd>Mock reviews, and analysis of a game before and after launch.</dd>
+            </div>
+            <div>
+              <dt>On air</dt>
+              <dd>Podcasts and on-camera interviews.</dd>
+            </div>
+          </dl>
+          <a class="tlink" href="services.html">Read the services page</a>
+        </div>
+      </div>
+
+      <div class="grid chapter reveal">
+        <div class="chapter-head">
+          <span class="num" aria-hidden="true">02</span>
+          <h3 class="chapter-title">Who does the work</h3>
+          <p class="dek">Brian Crecente, and the writers and critics he works with.</p>
+        </div>
+        <div class="chapter-body">
+          <dl class="rows">
+            <div>
+              <dt>Epic Games Store news</dt>
+              <dd>Pad &amp; Pixel runs the news page for the Epic Games Store. Brian is its executive editor and helps lead a team of more than 50 freelancers.</dd>
+            </div>
+            <div>
+              <dt>The critics’ bench</dt>
+              <dd>
+                <p>Mock reviews draw on a separate bench of more than 50 working and former games critics in eight countries. Brian leads the practice.</p>
+                <a class="tlink" href="mock-reviews.html">How mock reviews work</a>
+              </dd>
+            </div>
+          </dl>
+          <div class="callout">
+            <span class="label">Kept apart</span>
+            <p>Mock review work runs under NDA. A standing recusal policy keeps it separate from published journalism.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. The founder -->
+  <section class="section on-dark" id="founder" aria-labelledby="founder-title">
+    <div class="wrap">
+      <div class="flag reveal"><p class="k">The founder</p><p class="d">Writing about games since 2000</p></div>
+      <div class="grid founder-grid reveal">
+        <div class="founder-id">
+          <h2 class="h2" id="founder-title">Brian Crecente</h2>
+          <p class="role">Founder, Pad <span class="amp">&amp;</span> Pixel, LLC</p>
+        </div>
+        <div class="founder-lead prose">
+          <p class="lead">Brian founded Kotaku and co&#8209;founded Polygon, which he helped take from start-up to one of the largest video game sites in the world. He was video games editor at Rolling Stone and at Variety.</p>
+          <p class="muted">Before he covered games full time, he spent more than 15 years as an award-winning reporter at major daily newspapers around the country, covering wildfires, daily crime, a contested presidential election and serial killers. For about a decade he also wrote a weekly gaming column for McClatchy-Tribune News Service.</p>
+        </div>
+      </div>
+
+      <dl class="figs reveal">
+        <div>
+          <dt><span class="label">Kotaku</span> <span class="role">Founder</span></dt>
+          <dd class="fig"><span>10,000 to</span> <span>10&nbsp;million</span></dd>
+          <dd class="cap">Monthly traffic, over seven years.</dd>
+        </div>
+        <div>
+          <dt><span class="label">Rolling Stone</span> <span class="role">Video games editor</span></dt>
+          <dd class="fig"><span>250,000 to</span> <span>1.25&nbsp;million</span></dd>
+          <dd class="cap">Gaming traffic in the first three months, with a team of contractors he led.</dd>
+        </div>
+        <div>
+          <dt><span class="label">Variety</span> <span class="role">Video games editor</span></dt>
+          <dd class="fig"><span>Zero to</span> <span>2&nbsp;million</span></dd>
+          <dd class="cap">Monthly visits to the gaming vertical he started, reached in one year.</dd>
+        </div>
+      </dl>
+
+      <dl class="record reveal">
+        <div><dt>Recognition</dt><dd>One of the 20 most influential people in the video game industry over the past 20 years (GamePro, 2009). One of gaming’s Top 50 journalists (Edge, 2006).</dd></div>
+        <div><dt>Boards</dt><dd>Games for Change, SXSW and the games program at the State University of New York at Canton.</dd></div>
+        <div><dt>Speaking</dt><dd>SXSW, the Smithsonian, UCLA, GDC, Gamescom and PAX. He has also appeared on national TV and radio.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 4. Clients -->
+  <section class="section clients" id="clients" aria-labelledby="clients-title">
+    <div class="wrap reveal">
+      <div class="flag"><h2 class="k" id="clients-title">Clients have included</h2></div>
+      <ul class="client-list">
+        <li>The Washington Post</li>
+        <li>The LEGO Group</li>
+        <li>Epic Games</li>
+        <li>Tencent</li>
+        <li>Niantic</li>
+        <li>Minute Media</li>
+        <li>OtterBox</li>
+        <li>Survios</li>
+        <li>Playcrafting</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. Closing CTA -->
+  <section class="on-red cta-band" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="flag"><p class="k">Contact</p></div>
+      <div class="grid cta-grid">
+        <h2 class="h2" id="cta-title">Something in the&nbsp;works?</h2>
+        <p class="note">A few lines on the project and the deadline will do. We reply as soon as we can.</p>
+      </div>
+      <a class="email" href="mailto:crecente@padandpixel.com?subject=Project%20inquiry">crecente@<wbr>padandpixel.com</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer on-dark">
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="index.html" aria-label="Pad &amp; Pixel, home">
+        <svg viewBox="-10 -10 320 320" aria-hidden="true" focusable="false">
+          <path fill="#F3F1EB" d="M0 0H240A60 60 0 0 1 300 60V140A60 60 0 0 1 240 200H100V100H0Z"/>
+          <path fill="#2D7DFF" d="M0 100H100V200Z"/>
+          <rect fill="#FF3C46" y="200" width="100" height="100"/>
+        </svg>
+        <span class="wordmark">Pad&amp;Pixel</span>
+      </a>
+    </div>
+    <div>
+      <small>© 2026 Pad <span class="amp">&amp;</span> Pixel, LLC
+        <span class="credit">Design concept by Artur Vasilyan · <a href="https://vasylian.com/">vasylian.com</a></span>
+      </small>
+    </div>
+    <a class="top" href="#top">Back to top</a>
+  </div>
+</footer>
+</body>
+</html>
